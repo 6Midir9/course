@@ -1,0 +1,18 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+    <h2>Каталог</h2>
+    <a href="{% url 'shop:create_product' %}" class="btn btn-primary">Створити Нове Оголошення</a>
+    {% for category in categories %}
+        <h3>{{ category.name }}</h3>
+        <ul>
+            {% for product in category.product_set.all %}
+                <li><a href="{% url 'shop:product_detail' product.id %}">{{ product.title }}</a> - {{ product.price }}</li>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <p>Тут ще не має категорій.</p>
+    {% endfor %}
+{% endblock %}

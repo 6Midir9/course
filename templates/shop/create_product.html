@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Створення Нового Оголошення{% endblock %}
+
+{% block content %}
+    <h2>Створити нове оголошення</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Створити</button>
+    </form>
+{% endblock %}
