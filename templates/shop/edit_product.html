@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+
+{% block title %} Редагування {{ product.title }}{% endblock %}
+
+{% block content %}
+    <h2>Редагувати оголошення: {{ product.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Завершити</button>
+    </form>
+{% endblock %}

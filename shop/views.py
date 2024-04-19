@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -21,4 +21,28 @@ def create_product(request):
             return redirect('shop:product_list')
     else:
         form = ProductForm()
-    return render(request, 'shop/create_product.html', {'form': form})
+    
+    context = {'form': form}
+    return render(request, 'shop/create_product.html', context)
+
+def edit_product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('shop:product_detail', product_id)
+    else:
+        form = ProductForm(instance=product)
+
+    context = {'form': form, 'product': product}
+    return render(request, 'shop/edit_product.html', context)
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, id=id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('shop:product_list')
+    
+    context = {'product': product}
+    return render(request, 'shop/delete_product.html', context)

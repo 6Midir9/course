@@ -3,8 +3,10 @@
 {% block title %}{{ product.title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ product.title }}</h2>
-    <p>{{ product.description }}</p>
-    <p>Price: {{ product.price }}</p>
-    <a href="{% url 'shop:product_list' %}">Back to catalog</a>
+    <h2> Названня товару: {{ product.title }}</h2>
+    <p> Опис: {{ product.description }}</p>
+    <p> Ціна: {{ product.price }} грн.</p>
+    <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
+    <a href="{% url 'shop:delete_product' product.id %}">Delete Product</a>
+    <p><a href="{% url 'shop:product_list' %}"> Повернутися До Каталогів </a></p>
 {% endblock %}

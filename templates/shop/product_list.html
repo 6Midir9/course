@@ -9,7 +9,7 @@
         <h3>{{ category.name }}</h3>
         <ul>
             {% for product in category.product_set.all %}
-                <li><a href="{% url 'shop:product_detail' product.id %}">{{ product.title }}</a> - {{ product.price }}</li>
+                <li><a href="{% url 'shop:product_detail' product.id %}">{{ product.title }}</a> - {{ product.price }} грн.</li>
             {% endfor %}
         </ul>
     {% empty %}
