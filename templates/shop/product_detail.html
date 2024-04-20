@@ -1,14 +1,15 @@
 {% extends 'shop/base.html' %}
-
+{% load static %}
 {% block title %}{{ product.title }}{% endblock %}
 
 {% block content %}
-    <h2> Названня товару: {{ product.title }}</h2>
+    <h2>Названня товару: {{ product.title }}</h2>
     <p> Опис: {{ product.description }}</p>
     <p> Ціна: {{ product.price }} грн.</p>
     <p> Контакти: {{ product.contact }}</p>
     <p> Статус: {{ product.status }}</p>
     <p> Дата створення: {{ product.published_date }}</p>
+    <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></p>
     {% if request.user == product.owner or request.user.is_superuser %}
     <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
     <a href="{% url 'shop:delete_product' product.id %}">Видалити Оголошення</a>

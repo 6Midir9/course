@@ -22,7 +22,8 @@ class Product(models.Model):
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active', verbose_name='Статус')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='products')
-
+    image = models.ImageField(blank=True, upload_to='images')
+    
     def __str__(self):
         return self.title
     
