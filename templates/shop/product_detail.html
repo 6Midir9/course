@@ -6,7 +6,10 @@
     <h2> Названня товару: {{ product.title }}</h2>
     <p> Опис: {{ product.description }}</p>
     <p> Ціна: {{ product.price }} грн.</p>
+    <p> Контакти: {{ product.contact }}</p>
+    <p> Статус: {{ product.status }}</p>
+    <p> Дата створення: {{ product.published_date }}</p>
     <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
-    <a href="{% url 'shop:delete_product' product.id %}">Delete Product</a>
+    <a href="{% url 'shop:delete_product' product.id %}">Видалити Оголошення</a>
     <p><a href="{% url 'shop:product_list' %}"> Повернутися До Каталогів </a></p>
 {% endblock %}

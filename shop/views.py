@@ -25,13 +25,13 @@ def create_product(request):
     context = {'form': form}
     return render(request, 'shop/create_product.html', context)
 
-def edit_product(request, product_id):
-    product = Product.objects.get(id=product_id)
+def edit_product(request, id):
+    product = Product.objects.get(id=id)
     if request.method == 'POST':
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('shop:product_detail', product_id)
+            return redirect('shop:product_detail', id=product.id)
     else:
         form = ProductForm(instance=product)
 
