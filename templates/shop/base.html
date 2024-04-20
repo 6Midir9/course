@@ -1,5 +1,15 @@
 <p>
     <a href="{% url 'shop:index' %}">Головна сторінка - </a>
     <a href="{% url 'shop:product_list' %}">Каталог</a>
+{% if user.is_authenticated %}
+    Hello, {{ user.username }}.
+    <form action="{% url 'users:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <a href="{% url 'users:login' %}">log in</a>
+    <a href="{% url 'users:register' %}">Register</a> 
+{% endif %}
 </p>
     {% block content %} {% endblock content %}

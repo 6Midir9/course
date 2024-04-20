@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.conf import settings
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -20,6 +21,7 @@ class Product(models.Model):
         ('sold', 'Продано'),
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active', verbose_name='Статус')
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='products')
 
     def __str__(self):
         return self.title

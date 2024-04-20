@@ -9,7 +9,9 @@
     <p> Контакти: {{ product.contact }}</p>
     <p> Статус: {{ product.status }}</p>
     <p> Дата створення: {{ product.published_date }}</p>
+    {% if request.user == product.owner or request.user.is_superuser %}
     <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
     <a href="{% url 'shop:delete_product' product.id %}">Видалити Оголошення</a>
+    {% endif %}
     <p><a href="{% url 'shop:product_list' %}"> Повернутися До Каталогів </a></p>
 {% endblock %}
