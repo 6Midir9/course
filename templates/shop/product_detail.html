@@ -9,9 +9,9 @@
     <p> Контакти: {{ product.contact }}</p>
     <p> Статус: {{ product.status }}</p>
     <p> Дата створення: {{ product.published_date }}</p>
-    <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></p>
+    <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
     {% if request.user == product.owner or request.user.is_superuser %}
-    <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
+    <a href="{% url 'shop:edit_product' product.id %}">Редагувати - </a>
     <a href="{% url 'shop:delete_product' product.id %}">Видалити Оголошення</a>
     {% endif %}
     <p><a href="{% url 'shop:product_list' %}"> Повернутися До Каталогів </a></p>

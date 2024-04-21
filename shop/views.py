@@ -19,7 +19,7 @@ def product_detail(request, id):
 @login_required
 def create_product(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
            product = form.save(commit=False)
            product.owner = request.user
@@ -37,7 +37,7 @@ def edit_product(request, id):
     if request.user != product.owner and not request.user.is_superuser:
         return redirect('shop:product_list')
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect('shop:product_detail', id=product.id)
