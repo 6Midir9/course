@@ -27,3 +27,12 @@ class Product(models.Model):
     def __str__(self):
         return self.title
     
+class Favorite(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="favorites")
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name="favorited_by")
+
+    class Meta:
+        unique_together = ('user', 'product')
+
+    def __str__(self):
+        return f"{self.user.username} favorites {self.product.title}"

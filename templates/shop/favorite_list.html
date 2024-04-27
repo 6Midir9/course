@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %} 
+<h1>Обрані оголошення:</h1>
+<ul>
+    {% for favorite in favorites %}
+    <h2>{{ favorite.product.title }}</h2> 
+    <p>Опис: {{ favorite.product.description }}</p>
+    <p>Ціна: {{ favorite.product.price }} грн.</p>
+    <p> Контакти: {{ favorite.product.contact }}</p>
+    <p> Статус: {{ favorite.product.status }}</p>
+    <p> Дата створення: {{ favorite.product.published_date }}</p>
+    <p><img src="{% if favorite.product.image %}{{ favorite.product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
+    <a href="{% url 'shop:remove_favorite' favorite.product.id %}">Прибрати</a></li>
+    {% empty %}
+    <li>Тут ще немає обраниї оголошень.</li>
+    {% endfor %}
+    {% endblock %}
+</ul>
