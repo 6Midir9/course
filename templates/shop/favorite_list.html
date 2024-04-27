@@ -5,7 +5,7 @@
 <h1>Обрані оголошення:</h1>
 <ul>
     {% for favorite in favorites %}
-    <h2>{{ favorite.product.title }}</h2> 
+    <h2>{{ favorite.product.title }}</h2>
     <p>Опис: {{ favorite.product.description }}</p>
     <p>Ціна: {{ favorite.product.price }} грн.</p>
     <p> Контакти: {{ favorite.product.contact }}</p>

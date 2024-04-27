@@ -4,7 +4,8 @@
 
 {% block content %}
     {{ category.product.name }}
-    <h2>Названня товару: {{ product.title }}</h2> 
+    <h2>Названня товару: {{ product.title }}</h2>
+    <p>Сторив оголошення: {{ product.owner.username }}</p>
     <h2><a href="{% url 'shop:add_favorite' product.id %}">♥</a></h2>
     <p> Опис: {{ product.description }}</p>
     <p> Ціна: {{ product.price }} грн.</p>

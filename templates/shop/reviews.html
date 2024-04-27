@@ -1,0 +1,17 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<h1>Відгуки користувачів</h1>
+<ul>
+    {% for review in reviews %}
+    <li>
+        <strong>Користувач: {{ review.user.username }}</strong> ({{ review.created_at }}): 
+        <p>Оцінка: {{ review.rating }}</p>
+        <p>Відгук: {{ review.comment }}</p>
+    </li>
+    {% empty %}
+    <li>Тут ще немає відгуків.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'shop:add_review' %}">Залишити відгук</a>
+{% endblock %}

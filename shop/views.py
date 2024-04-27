@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Category, Favorite
-from .forms import ProductForm
+from .models import Product, Category, Favorite, Review
+from .forms import ProductForm, ReviewForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -80,3 +80,23 @@ def favorite_list(request):
 def my_products(request):
     products = Product.objects.filter(owner=request.user)  
     return render(request, 'shop/my_products.html', {'products': products})
+
+@login_required
+def reviews(request):
+    reviews = Review.objects.all().order_by('-created_at')
+    return render(request, 'shop/reviews.html', {'reviews': reviews})
+
+@login_required
+def add_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.save()
+            return redirect('shop:reviews')
+    else:
+        form = ReviewForm()
+
+    context = {'form': form}    
+    return render(request, 'shop/add_review.html', context)
