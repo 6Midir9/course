@@ -7,9 +7,11 @@
     {% for product in products %}
     <li>
     <h2>{{ product.title }}</h2>
+    <p> Сторив оголошення: {{ product.owner.username }}</p>
     <p> Опис: {{ product.description }}</p>
     <p> Ціна: {{ product.price }}</p>
-    <p> Статус: {{ product.status }}</p>
+    <p> Контакти: {{ product.contact }}</p>
+    <p> Місцезнаходження: {{ product.location }}</p>
     <p> Дата створення: {{ product.published_date }}</p>
     <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
     </li>

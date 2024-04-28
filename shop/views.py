@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category, Favorite, Review
-from .forms import ProductForm, ReviewForm
+from .forms import ProductForm, ReviewForm, CategoryFilterForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -8,8 +8,16 @@ def index(request):
 
 @login_required
 def product_list(request):
-    categories = Category.objects.all()
-    return render(request, 'shop/product_list.html', {'categories': categories})
+    form = CategoryFilterForm(request.GET)
+    if form.is_valid():
+        if form.cleaned_data['category']:
+            products = Product.objects.filter(category=form.cleaned_data['category'])
+        else:
+            products = Product.objects.all()
+    else:
+        products = Product.objects.all()
+
+    return render(request, 'shop/product_list.html', {'products': products, 'form': form})
 
 @login_required
 def product_detail(request, id):
@@ -33,7 +41,7 @@ def create_product(request):
 
 @login_required
 def edit_product(request, id):
-    product = Product.objects.get(id=id)
+    product = get_object_or_404(Product, id=id)
     if request.user != product.owner and not request.user.is_superuser:
         return redirect('shop:product_list')
     if request.method == 'POST':

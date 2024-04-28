@@ -10,7 +10,7 @@
     <p> Опис: {{ product.description }}</p>
     <p> Ціна: {{ product.price }} грн.</p>
     <p> Контакти: {{ product.contact }}</p>
-    <p> Статус: {{ product.status }}</p>
+    <p> Місцезнаходження: {{ product.location }}</p>
     <p> Дата створення: {{ product.published_date }}</p>
     <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
     {% if request.user == product.owner or request.user.is_superuser %}

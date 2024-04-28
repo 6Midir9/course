@@ -1,18 +1,23 @@
 {% extends 'shop/base.html' %}
-
+{% load static %}
 {% block title %}Каталог{% endblock %}
 
 {% block content %}
+
+    <a href="{% url 'shop:create_product' %}" class="btn btn-primary">Створити Нове Оголошення</a> 
+
     <h2>Каталог</h2>
-    <a href="{% url 'shop:create_product' %}" class="btn btn-primary">Створити Нове Оголошення</a>
-    {% for category in categories %}
-        <h3>{{ category.name }}</h3>
-        <ul>
-            {% for product in category.product_set.all %}
-                <li><a href="{% url 'shop:product_detail' product.id %}">{{ product.title }}</a> - {{ product.price }} грн.</li>
-            {% endfor %}
-        </ul>
+     <form method="get" action="">
+       {{ form.as_p }}
+     <button type="submit">Фільтрувати</button>
+    </form>
+
+    {% for product in products %}
+    <ul>
+        <li><a href="{% url 'shop:product_detail' product.id %}"> {{ product.title }} - {{ product.price }} грн.</a> <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="270" height="230" /></p></li>
+    </ul>
     {% empty %}
-        <p>Тут ще не має категорій.</p>
+        <p>Тут ще не має оголошень.</p>
     {% endfor %}
+
 {% endblock %}

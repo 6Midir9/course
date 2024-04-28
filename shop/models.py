@@ -16,13 +16,9 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Каталог')
     published_date = models.DateTimeField(default=datetime.datetime.now, verbose_name='Дата публікації')
     contact = models.CharField(max_length=200, verbose_name='Контакти')
-    STATUS_CHOICES = (
-        ('active', 'Активно'),
-        ('sold', 'Продано'),
-    )
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active', verbose_name='Статус')
+    location = models.CharField(max_length=400, verbose_name='Місцезнаходження')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='products')
-    image = models.ImageField(blank=True, upload_to='images')
+    image = models.ImageField(blank=True, upload_to='images', verbose_name='Зображення')
     
     def __str__(self):
         return self.title

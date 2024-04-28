@@ -1,0 +1,37 @@
+
+.navbar {
+    background-color: #545252; /* Темный фон */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.nav-links a, .login-register a {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover, .login-register a:hover {
+    background-color: #373636; /* Светлее фон при наведении */
+}
+
+.user-info form {
+    display: inline; /* Форма выхода должна быть в линии с приветствием */
+}
+
+.user-info button {
+    background-color: #f44336; /* Красная кнопка для выхода */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.user-info button:hover {
+    background-color: #c33;
+}
