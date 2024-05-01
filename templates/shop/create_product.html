@@ -3,10 +3,12 @@
 {% block title %}Створення Нового Оголошення{% endblock %}
 
 {% block content %}
-    <h2>Створити нове оголошення</h2>
-    <form method="post" enctype="multipart/form-data">
+<div class="form-container">
+    <h2 class="editing-title">Створити нове оголошення</h2>
+    <form method="post" enctype="multipart/form-data" class="creation-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Створити</button>
+        <button type="submit" class="submit-button">Створити</button>
     </form>
+</div>
 {% endblock %}

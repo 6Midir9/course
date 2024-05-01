@@ -1,37 +1,619 @@
 
 .navbar {
-    background-color: #545252; /* Темный фон */
+    background-color: #063f49;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Распределение места между левым, центральным и правым блоками */
     padding: 10px 20px;
     align-items: center;
+    font-size: 18px; /* Больший размер шрифта для навигационной панели */
+    border-radius: 10px; /* Добавляем закругление углов к навбару */
+    box-shadow: 0 10px 20px rgba(0, 9, 2, 0.529);
 }
 
-.nav-links a, .login-register a {
+.nav-links {
+    display: flex; /* Центральные ссылки также используют flex для выравнивания внутри своего блока */
+    justify-content: center; /* Центрирование ссылок внутри блока */
+    flex-grow: 1; /* Позволяет центральному блоку занимать больше пространства */
+    font-weight: 500; /* Полужирное начертание для ссылок в навигационной панели */
+}
+
+.nav-links a {
     color: white;
     padding: 10px 15px;
     text-decoration: none;
     transition: background-color 0.3s;
+    border-radius: 5px;
 }
 
-.nav-links a:hover, .login-register a:hover {
-    background-color: #373636; /* Светлее фон при наведении */
+.nav-links a:hover {
+    background-color: #a3b4dc;
 }
 
-.user-info form {
-    display: inline; /* Форма выхода должна быть в линии с приветствием */
+.nav-left, .user-info, .login-register {
+    flex-grow: 0; /* Не позволяет этим блокам расширяться более, чем необходимо */
+}
+
+.user-info, .login-register {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.user-info form, .login-register a {
+    margin-left: 10px;
 }
 
 .user-info button {
-    background-color: #f44336; /* Красная кнопка для выхода */
+    background-color: #f44336;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    margin-left: 10px;
+    border-radius: 5px;
 }
 
 .user-info button:hover {
     background-color: #c33;
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px; /* Размер шрифта по умолчанию */
+    background-color: #c3d7ed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500; /* Полужирное начертание для заголовков */
+}
+
+.hero {
+    background-color: #e9ecef;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Нижний отступ для создания пространства после секции */
+    border-radius: 10px;
+}
+
+.about-us {
+    background-color: #e9ecef;
+    display: flex; /* Включаем Flexbox для родителя */
+    align-items: flex-start; /* Выравниваем элементы по верхней границе */
+    gap: 20px; /* Добавляем промежуток между колонками */
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.about-us img {
+    width: 40%; /* Определяем ширину изображения */
+    height: auto; /* Поддерживаем пропорции */
+    flex-shrink: 0; /* Не позволяем уменьшать изображение */
+    border-radius: 10px;
+}
+
+.text-content {
+    flex-grow: 1; /* Текст занимает оставшееся пространство */
+    display: flex; /* Включаем Flexbox для текста */
+    flex-direction: column; /* Располагаем параграфы вертикально */
+}
+
+.about-us2 {
+    background-color: #e9ecef;
+    display: flex; /* Включаем Flexbox для родителя */
+    align-items: flex-start; /* Выравниваем элементы по верхней границе */
+    gap: 20px; /* Добавляем промежуток между колонками */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: row-reverse; /* Переворачиваем порядок элементов: изображение будет справа */
+}
+
+.about-us2 img {
+    width: 40%; /* Определяем ширину изображения */
+    height: auto; /* Поддерживаем пропорции */
+    flex-shrink: 0; /* Не позволяем уменьшать изображение */
+    border-radius: 10px;
+}
+
+.text-content2 {
+    flex-grow: 1; /* Текст занимает оставшееся пространство */
+    display: flex; /* Включаем Flexbox для текста */
+    flex-direction: column; /* Располагаем параграфы вертикально */
+}
+
+.text-content h2, .text-content p {
+    margin: 0 0 10px; /* Устанавливаем отступы между параграфами */
+}
+
+
+.filter-container {
+    align-self: flex-start;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+.catalog-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.create-container {
+    display: flex;
+    justify-content: flex-end; /* Выравнивание элементов контейнера по правому краю */
+    margin-right: 20px; /* Добавляем отступ справа для отступления от края экрана */
+    margin: 20px;
+}
+
+.create-container .btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.create-container .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Выравнивание продуктов слева направо */
+    gap: 20px; /* Расстояние между продуктами */
+}
+
+.product-item {
+    width: calc(33.333% - 20px); /* Три продукта на строку с учетом промежутков */
+    border: 1px solid #0100002a;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+}
+
+.product-image {
+    width: 100%;
+    height: 230px;
+    object-fit: cover; /* Обеспечивает корректное отображение изображений */
+}
+
+.product-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.catalog-title {
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 20px;
+    color: black;
+    background-color: #fefeff;
+    margin-top: 10px; /* Верхний отступ */
+    margin-bottom: 20px; /* Нижний отступ, чтобы создать пространство между заголовком и другими элементами */
+    border-radius: 10px;
+}
+
+.product-details {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.favorite a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: red;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    text-decoration: none;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorite a:hover {
+    background-color: red;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.product-actions {
+    text-align: center;
+    margin: 10px auto;
+    width: 40%;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.product-actions a {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.product-actions a.delete-link {
+    background: #dc3545;
+}
+
+.back-to-list a {
+    display: inline-block;
+    background: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.back-to-list {
+    margin-top: 10px;
+}
+
+.description {
+    overflow-wrap: break-word;
+    max-height: 300px;  /* Установите максимальную высоту по вашему выбору */
+    overflow: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.details-block {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+    overflow: auto;
+}
+
+.detail {
+    margin-bottom: 5px;
+    overflow-wrap: break-word;
+}
+
+.detail-block {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.product-title-block h2 {
+    margin: 0; /* Удаление стандартного отступа у заголовков */
+    color: #007bff;
+    font-size: 30px;
+}
+
+.image-block {
+    text-align: center; /* Центрирование изображения в блоке */
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-block img {
+    width: 100%; /* Адаптивная ширина */
+    height: auto; /* Поддержка пропорций изображения */
+    max-width: 400px; /* Максимальная ширина, чтобы изображение не становилось слишком большим */
+    border-radius: 4px; /* Скругление углов изображения */
+}
+
+.remove-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Красный цвет фона для удаления */
+    color: white; /* Белый текст */
+    text-decoration: none; /* Убрать подчёркивание текста */
+    font-weight: bold; /* Жирный текст */
+    border-radius: 5px; /* Скруглённые углы */
+    transition: background-color 0.3s, transform 0.3s; /* Плавные переходы */
+}
+
+.remove-button a:hover {
+    background-color: #c82333; /* Темнее красный при наведении */
+    transform: scale(1.05); /* Увеличение кнопки при наведении */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Тень для добавления глубины */
+}
+
+.reviews-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.review-item {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.review-user {
+    font-size: 18px;
+    color: #007bff;
+}
+
+.review-date {
+    font-size: 16px;
+    color: #666;
+}
+
+.review-rating {
+    font-weight: bold;
+    color: #333;
+}
+
+.review-comment {
+    font-style: italic;
+    margin-top: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.add-review-link {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.add-review-link:hover {
+    background-color: #0056b3;
+}
+
+.form-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.creation-form label {
+    font-weight: bold;
+}
+
+.creation-form p {
+    margin: 10px 0;
+}
+
+.creation-form input, .creation-form textarea, .creation-form select {
+    width: calc(100% - 15px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.editing-title {
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+}
+
+.delete-container {
+    width: 40%;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.delete-form {
+    margin-top: 20px;
+}
+
+.delete-button, .cancel-link {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+}
+
+.delete-button {
+    background-color: #dc3545; /* Bootstrap danger color */
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-link {
+    background-color: #6c757d; /* Bootstrap secondary color */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker shade for hover state */
+}
+
+.cancel-link:hover {
+    background-color: #5a6268; /* Darker shade for hover state */
+}
+
+.footer {
+    padding: 10px 20px;
+    background-color: #063f49;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 9, 2, 0.529);
+    font-weight: 700;
+}
+
+.footer-content p {
+    margin: 10px 0;
+}
+
+.registration-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.registration-container h1 {
+    color: #333;
+}
+
+.registration-container p {
+    font-size: 18px;
+    color: #666;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    color: white;
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Bootstrap secondary color */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.login-form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-message {
+    color: #dc3545; /* Bootstrap danger color */
+    font-weight: bold;
+}
+
+.login-form p {
+    margin: 15px 0;
+}
+
+.login-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.register-form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+

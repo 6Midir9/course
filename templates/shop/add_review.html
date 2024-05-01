@@ -1,10 +1,12 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
-<h1>Зробити Відук</h1>
-<form method="post">
+<div class="form-container">
+<h1 class="editing-title">Зробити відгук</h1>
+<form method="post" class="creation-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Викласти</button>
+    <button type="submit" class="submit-button">Викласти</button>
 </form>
+</div>
 {% endblock %}

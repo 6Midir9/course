@@ -3,10 +3,12 @@
 {% block title %} Редагування {{ product.title }}{% endblock %}
 
 {% block content %}
-    <h2>Редагувати оголошення: {{ product.title }}</h2>
-    <form method="post" enctype="multipart/form-data">
+<div class="form-container">
+    <h2 class="editing-title">Редагувати оголошення: {{ product.title }}</h2>
+    <form method="post" enctype="multipart/form-data" class="creation-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Завершити</button>
+        <button type="submit" class="submit-button">Завершити</button>
     </form>
+</div>
 {% endblock %}

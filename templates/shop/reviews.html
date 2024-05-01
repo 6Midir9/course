@@ -1,17 +1,17 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
-<h1>Відгуки користувачів</h1>
-<ul>
+<h1 class="catalog-title">Відгуки користувачів</h1>
+<a href="{% url 'shop:add_review' %}" class="add-review-link">Залишити відгук</a>
+<ul class="reviews-list">
     {% for review in reviews %}
-    <li>
-        <strong>Користувач: {{ review.user.username }}</strong> ({{ review.created_at }}): 
-        <p>Оцінка: {{ review.rating }}</p>
-        <p>Відгук: {{ review.comment }}</p>
+    <li class="review-item">
+        <strong class="review-user">Користувач: {{ review.user.username }}</strong> <span class="review-date">({{ review.created_at }}):</span>
+        <p class="review-rating">Оцінка: {{ review.rating }}</p>
+        <p class="review-comment">Відгук: {{ review.comment }}</p>
     </li>
     {% empty %}
-    <li>Тут ще немає відгуків.</li>
+    <li class="no-reviews">Тут ще немає відгуків.</li>
     {% endfor %}
 </ul>
-<a href="{% url 'shop:add_review' %}">Залишити відгук</a>
 {% endblock %}

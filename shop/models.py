@@ -35,8 +35,8 @@ class Favorite(models.Model):
     
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews")
-    rating = models.PositiveSmallIntegerField(default=5, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')])
-    comment = models.TextField()
+    rating = models.PositiveSmallIntegerField(default=5, choices=[(1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')], verbose_name='Оцінка')
+    comment = models.TextField(verbose_name='Відгук')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

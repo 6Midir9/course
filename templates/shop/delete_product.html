@@ -1,12 +1,14 @@
 {% extends 'shop/base.html' %}
 
-{% block title %} Видалення {{ product.title }}{% endblock %}
+{% block title %}Видалення {{ product.title }}{% endblock %}
 
 {% block content %}
+<div class="delete-container">
     <h2>Ви дійсно хочете видалити "{{ product.title }}"?</h2>
-    <form method="post">
+    <form method="post" class="delete-form">
         {% csrf_token %}
-        <button type="submit">Підтвердити видалення</button>
-        <a href="{% url 'shop:product_detail' product.id %}">Відмінити</a>
+        <button type="submit" class="delete-button">Підтвердити видалення</button>
+        <a href="{% url 'shop:product_detail' product.id %}" class="cancel-link">Відмінити</a>
     </form>
+</div>
 {% endblock %}

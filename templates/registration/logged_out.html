@@ -1,4 +1,12 @@
 {% extends "shop/base.html" %}
+
 {% block content %}
-    <p>You have been logged out. Thank you for visiting!</p>
+<div class="registration-container">
+    <h1>Вітаємо Вас в UkrMarket!</h1>
+    <p>Ви зараз не зареєстровані. Ви можете увійти або зареєструвати новий обліковий запис!</p>
+    <div class="actions">
+        <a href="{% url 'users:login' %}" class="btn btn-primary">Увійти</a>
+        <a href="{% url 'users:register' %}" class="btn btn-secondary">Зареєструватися</a>
+    </div>
+</div>
 {% endblock content %}

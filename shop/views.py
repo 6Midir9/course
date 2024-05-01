@@ -9,13 +9,17 @@ def index(request):
 @login_required
 def product_list(request):
     form = CategoryFilterForm(request.GET)
+    products = Product.objects.all()  
+
     if form.is_valid():
-        if form.cleaned_data['category']:
-            products = Product.objects.filter(category=form.cleaned_data['category'])
-        else:
-            products = Product.objects.all()
-    else:
-        products = Product.objects.all()
+        category = form.cleaned_data.get('category')
+        query = form.cleaned_data.get('query')
+
+        if category:
+            products = products.filter(category=category)
+
+        if query:
+            products = products.filter(title__icontains=query)
 
     return render(request, 'shop/product_list.html', {'products': products, 'form': form})
 
@@ -91,7 +95,7 @@ def my_products(request):
 
 @login_required
 def reviews(request):
-    reviews = Review.objects.all().order_by('-created_at')
+    reviews = Review.objects.all()
     return render(request, 'shop/reviews.html', {'reviews': reviews})
 
 @login_required
@@ -108,3 +112,5 @@ def add_review(request):
 
     context = {'form': form}    
     return render(request, 'shop/add_review.html', context)
+
+

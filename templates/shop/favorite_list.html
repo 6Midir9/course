@@ -2,19 +2,27 @@
 {% load static %}
 
 {% block content %} 
-<h1>Обрані оголошення:</h1>
-<ul>
+<h1 class="catalog-title">Обрані оголошення</h1>
     {% for favorite in favorites %}
-    <h2>{{ favorite.product.title }}</h2>
-    <p> Опис: {{ favorite.product.description }}</p>
-    <p> Ціна: {{ favorite.product.price }} грн.</p>
-    <p> Контакти: {{ favorite.product.contact }}</p>
-    <p> Місцезнаходження: {{ favorite.product.location }}</p>
-    <p> Дата створення: {{ favorite.product.published_date }}</p>
-    <p><img src="{% if favorite.product.image %}{{ favorite.product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
-    <a href="{% url 'shop:remove_favorite' favorite.product.id %}">Прибрати</a></li>
+    <div class="product-details">
+        <div class="detail-block product-title-block">
+          <h2>{{ favorite.product.title }}</h2>
+        </div>
+        <div class="image-block">
+          <img src="{% if favorite.product.image %}{{ favorite.product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" />
+        </div>
+        <p class="description">Опис: {{ favorite.product.description }}</p>
+        <div class="details-block">
+        <p>Ціна: {{ favorite.product.price }} грн.</p>
+        <p>Контакти: {{ favorite.product.contact }}</p>
+        <p>Місцезнаходження: {{ favorite.product.location }}</p>
+        <p>Дата створення: {{ favorite.product.published_date }}</p>
+        </div>
+        <div class="remove-button">
+            <a href="{% url 'shop:remove_favorite' favorite.product.id %}">Прибрати</a>
+        </div>
+    </div>
     {% empty %}
-    <li>Тут ще немає обраниї оголошень.</li>
+    <div class="no-reviews">Ви ще нічого не обрали.</div>
     {% endfor %}
-    {% endblock %}
-</ul>
+{% endblock %}

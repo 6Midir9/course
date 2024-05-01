@@ -3,21 +3,31 @@
 {% block title %}Каталог{% endblock %}
 
 {% block content %}
-
-    <a href="{% url 'shop:create_product' %}" class="btn btn-primary">Створити Нове Оголошення</a> 
-
-    <h2>Каталог</h2>
-     <form method="get" action="">
-       {{ form.as_p }}
-     <button type="submit">Фільтрувати</button>
-    </form>
-
-    {% for product in products %}
-    <ul>
-        <li><a href="{% url 'shop:product_detail' product.id %}"> {{ product.title }} - {{ product.price }} грн.</a> <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="270" height="230" /></p></li>
-    </ul>
-    {% empty %}
-        <p>Тут ще не має оголошень.</p>
-    {% endfor %}
-
+<div class="catalog-container">
+    <h1 class="catalog-title">Каталог</h1>
+    <div class="filter-container">
+        <form method="get" action="{% url 'shop:product_list' %}">
+            {{ form.category.label_tag }} {{ form.category }}
+            {{ form.query.label_tag }} {{ form.query }}
+            <button type="submit">Фільтрувати</button>
+        </form>
+    </div>
+    <div class="create-container">
+        <a href="{% url 'shop:create_product' %}" class="btn btn-primary">Створити Нове Оголошення</a>
+    </div>
+    <div class="products-container">
+        {% for product in products %}
+            <div class="product-item">
+                <a href="{% url 'shop:product_detail' product.id %}">
+                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ product.title }}" class="product-image">
+                    <div class="product-info">
+                        <h3>{{ product.title }} - {{ product.price }} грн.</h3>
+                    </div>
+                </a>
+            </div>
+        {% empty %}
+        <div class="no-reviews">Тут ще немає оголошень.</div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

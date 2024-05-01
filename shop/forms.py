@@ -9,12 +9,8 @@ class ProductForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['comment', 'rating']
+        fields = ['rating', 'comment']
 
 class CategoryFilterForm(forms.Form):
-    category = forms.ModelChoiceField(
-        queryset=Category.objects.all(),
-        required=False,
-        label='Вибрати розділ',
-        empty_label='Всі'
-    )
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False, label='Категорія')
+    query = forms.CharField(max_length=100, required=False, label='Пошук')

@@ -2,25 +2,34 @@
 {% load static %}
 
 {% block content %}
-<h1>Мої оголошення</h1>
+<h1 class="catalog-title">Мої оголошення</h1>
 <ul>
     {% for product in products %}
-    <li>
-    <h2>{{ product.title }}</h2>
+<div class="product-details">
+        <div class="detail-block product-title-block">
+            <h2>{{ product.title }}</h2>
+        </div>
+    <div class="image-block">
+            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+    </div>
     <p> Сторив оголошення: {{ product.owner.username }}</p>
-    <p> Опис: {{ product.description }}</p>
-    <p> Ціна: {{ product.price }}</p>
-    <p> Контакти: {{ product.contact }}</p>
-    <p> Місцезнаходження: {{ product.location }}</p>
-    <p> Дата створення: {{ product.published_date }}</p>
-    <p><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="400" height="350" /></p>
-    </li>
+    <p class="description">Опис: {{ product.description }}</p>
+    <div class="details-block">
+        <p class="detail">Ціна: {{ product.price }} грн.</p>
+        <p class="detail">Контакти: {{ product.contact }}</p>
+        <p class="detail">Місцезнаходження: {{ product.location }}</p>
+        <p class="detail">Дата створення: {{ product.published_date }}</p>
+    </div>
+</div>
     {% if request.user == product.owner or request.user.is_superuser %}
-    <a href="{% url 'shop:edit_product' product.id %}">Редагувати</a>
-    <a href="{% url 'shop:delete_product' product.id %}">Видалити</a>
+    <div class="product-actions">
+    <a href="{% url 'shop:edit_product' product.id %}" class="edit-link">Редагувати</a>
+    <a href="{% url 'shop:delete_product' product.id %}" class="delete-link">Видалити</a>
+    </div>
     {% endif %}
+    
     {% empty %}
-    <li>У Вас ще немає створенних оголошень.</li>
+    <div class="no-reviews">У Вас ще немає створенних оголошень</div>
     {% endfor %}
 </ul>
 {% endblock %}

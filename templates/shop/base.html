@@ -1,31 +1,47 @@
 {% load static %}
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
+<body>
 <nav class="navbar">
+    <div class="nav-left">
+    </div>
     <div class="nav-links">
         <a href="{% url 'shop:index' %}">Головна сторінка</a>
         <a href="{% url 'shop:product_list' %}">Каталог</a>
-        <a href="{% url 'shop:favorite_list' %}">Обрані</a>
+        <a href="{% url 'shop:favorite_list' %}">Обране</a>
         <a href="{% url 'shop:my_products' %}">Мої оголошення</a>
         <a href="{% url 'shop:reviews' %}">Відгуки</a>
     </div>
     {% if user.is_authenticated %}
         <div class="user-info">
-            Hello, {{ user.username }}.
+            Привіт, {{ user.username }}.
             <form action="{% url 'users:logout' %}" method="post">
                 {% csrf_token %}
-                <button type="submit">Logout</button>
+                <button type="submit">Вийти</button>
             </form>
         </div>
     {% else %}
         <div class="login-register">
-            <a href="{% url 'users:login' %}">log in</a>
-            <a href="{% url 'users:register' %}">Register</a>
+            <a href="{% url 'users:login' %}" class="btn btn-primary">Увійти</a>
+            <a href="{% url 'users:register' %}" class="btn btn-secondary">Зареєструватись</a>
         </div>
     {% endif %}
 </nav>
 
-{% block content %} {% endblock content %}
+{% block content %} 
+
+{% endblock content %}
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; UkrMarket. Всі права захищені.</p>
+    </div>
+</footer>
+</body>
+
+
+
