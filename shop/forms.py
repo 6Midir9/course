@@ -4,7 +4,7 @@ from .models import Product, Review, Category
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['title', 'description', 'price', 'published_date', 'contact', 'location', 'category', 'image']
+        fields = ['title', 'description', 'price', 'created_at', 'contact', 'location', 'category', 'image']
 
 class ReviewForm(forms.ModelForm):
     class Meta:

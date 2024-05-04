@@ -95,7 +95,7 @@ def my_products(request):
 
 @login_required
 def reviews(request):
-    reviews = Review.objects.all()
+    reviews = Review.objects.all().order_by('-created_at')
     return render(request, 'shop/reviews.html', {'reviews': reviews})
 
 @login_required

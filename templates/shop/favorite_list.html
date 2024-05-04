@@ -16,7 +16,7 @@
         <p>Ціна: {{ favorite.product.price }} грн.</p>
         <p>Контакти: {{ favorite.product.contact }}</p>
         <p>Місцезнаходження: {{ favorite.product.location }}</p>
-        <p>Дата створення: {{ favorite.product.published_date }}</p>
+        <p>Дата створення: {{ favorite.product.created_at }}</p>
         </div>
         <div class="remove-button">
             <a href="{% url 'shop:remove_favorite' favorite.product.id %}">Прибрати</a>

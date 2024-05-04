@@ -14,7 +14,7 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Опис')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Ціна')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Каталог')
-    published_date = models.DateTimeField(default=datetime.datetime.now, verbose_name='Дата публікації')
+    created_at = models.DateTimeField(default=datetime.datetime.now, verbose_name='Дата публікації')
     contact = models.CharField(max_length=200, verbose_name='Контакти')
     location = models.CharField(max_length=400, verbose_name='Місцезнаходження')
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='products')
@@ -31,7 +31,7 @@ class Favorite(models.Model):
         unique_together = ('user', 'product')
 
     def __str__(self):
-        return f"{self.user.username} favorites {self.product.title}"
+        return self.user.username
     
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews")
